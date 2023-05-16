@@ -1,0 +1,4 @@
+Miguel;Gómez García;324455643;c/Hospital, 56
+Manuel;Pérez González;5434534;c/Raïm, 13
+Luis;Fernández López;54545543;c/Justícia, 34 2on 3a
+Pedro;Picapiedra;5445;c/Basalto, 12
