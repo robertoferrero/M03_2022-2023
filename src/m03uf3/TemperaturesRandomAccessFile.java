@@ -16,12 +16,13 @@ public class TemperaturesRandomAccessFile {
     public static void main(String[] args) {
         
         byte[] temperatures = {20,21,22};
+        byte[] mestemperatures = {23,25,28,30};
         
         try {
             RandomAccessFile fitxer = 
                     new RandomAccessFile("temperatures_random","rw");
             
-            //escriureTemperatures(temperatures,fitxer);
+            //escriureTemperatures(mestemperatures,fitxer,3);
             
             byte[] temp = new byte[10];
             llegirTemperatures(temp,fitxer);
@@ -29,21 +30,23 @@ public class TemperaturesRandomAccessFile {
                 System.out.println("Temperatura: " + t);
             }
             
+            fitxer.close();
             
         } catch (IOException e) { System.out.println(e.getMessage()); }
         
     }
     
     public static void escriureTemperatures(byte[] temperatures, 
-                                            RandomAccessFile f) throws IOException {
-        
+                                            RandomAccessFile f,
+                                            int pos) throws IOException {
+        f.seek(pos);
         f.write(temperatures);
-        f.close();
+        
     }
 
     public static void llegirTemperatures(byte[] temperatures,RandomAccessFile f) throws IOException {                
         f.read(temperatures);
-        f.close();
+        
     }
 
 }
