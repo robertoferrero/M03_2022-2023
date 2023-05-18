@@ -4,12 +4,14 @@
  */
 package m03uf3;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rferrero
  */
-public class Contacte implements Comparable<Contacte> {
-    
+public class Contacte implements Comparable<Contacte>,Serializable {
+        
     private String nom;
     private String cognoms;
     private String telefon;
