@@ -32,7 +32,10 @@ public class TemperaturesRandomAccessFile {
             
             fitxer.close();
             
-        } catch (IOException e) { System.out.println(e.getMessage()); }
+        } catch (IOException e) { 
+            System.out.println("S'ha produit un error.");
+            System.out.println(e.getMessage()); 
+        }
         
     }
     
