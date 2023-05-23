@@ -27,9 +27,9 @@ public class Recursivitat_Sumar5Primers {
     // Solució recursiva
     public static int sumaRec(int n) {
         if (n > 1)
-            return n + sumaRec(n-1);  // algorisme general
+            return n + sumaRec(n-1);  // cas general
         else
-            return 1;                 // Cas bàsic n = 1
+            return 1;                 // Cas base n = 1
     }
     
 }

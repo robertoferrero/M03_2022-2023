@@ -30,7 +30,7 @@ public class Recursivitat_Ex02 {
         if (n > 1)
             return n*factorialRec(n-1);      // Cas general
         
-        return 1;                            // Cas bàsic
+        return 1;                            // Cas base
     }
     
 }
