@@ -21,8 +21,7 @@ public class Recursivitat_Sumar5Primers {
         int suma = sumaRec(5);
         System.out.println("Suma = " + suma);
         
-        int factorial = factorialRec(5);
-        System.out.println("Factorial = " + factorial);
+
     }
     
     // Solució recursiva
@@ -33,20 +32,4 @@ public class Recursivitat_Sumar5Primers {
             return 1;                 // Cas bàsic n = 1
     }
     
-    public static int factorialIter(int n) {
-        int factorial = 1;
-        for(int i = n; i>1; --i)
-            factorial *= i;
-        
-        return factorial;
-        
-    }
-
-    public static int factorialRec(int n) {
-        
-        if (n > 1)
-            return n*factorialRec(n-1);      // Cas general
-        
-        return 1;                        // Cas bàsic
-    }
 }
