@@ -19,12 +19,12 @@ public class Temperatures {
         
         
         byte[] temperatures = new byte[3];
-        temperatures[0] = 14;
-        temperatures[1] = 16;
-        temperatures[2] = 17;
+        temperatures[0] = 49; // 1
+        temperatures[1] = 54; // 6
+        temperatures[2] = 75; // 7
         
-        //salvarTemperatures(temperatures);
-        byte[] temp = llegirTemperatures();
+        salvarTemperatures(temperatures);
+        //byte[] temp = llegirTemperatures();
         System.out.println("");
     }
     
@@ -33,9 +33,10 @@ public class Temperatures {
         try {
             FileOutputStream fitxer = new FileOutputStream("temperatures");
             
-            for (byte temperatura : temperatures) {
+            /*for (byte temperatura : temperatures) {
                 fitxer.write(temperatura);
-            }
+            }*/
+            fitxer.write(temperatures);
             fitxer.close();
         } catch (IOException e) {}
         

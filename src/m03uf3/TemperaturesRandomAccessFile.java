@@ -15,22 +15,21 @@ public class TemperaturesRandomAccessFile {
     
     public static void main(String[] args) {
         
-        byte[] temperatures = {20,21,22};
-        byte[] mestemperatures = {23,25,28,30};
+        byte[] temperatures = {1,2,3};
+        byte[] mestemperatures = {4,5,6,7};
         
         try {
-            RandomAccessFile fitxer = 
-                    new RandomAccessFile("temperatures_random","rw");
             
-            //escriureTemperatures(mestemperatures,fitxer,3);
+            escriureTemperatures(temperatures);
+            escriureTemperatures(mestemperatures,3);
             
             byte[] temp = new byte[10];
-            llegirTemperatures(temp,fitxer);
+            llegirTemperatures(temp);
             for (byte t : temp) {
                 System.out.println("Temperatura: " + t);
             }
             
-            fitxer.close();
+            
             
         } catch (IOException e) { 
             System.out.println("S'ha produit un error.");
@@ -39,16 +38,34 @@ public class TemperaturesRandomAccessFile {
         
     }
     
-    public static void escriureTemperatures(byte[] temperatures, 
-                                            RandomAccessFile f,
+    public static void escriureTemperatures(byte[] temperatures) throws IOException {
+
+        RandomAccessFile fitxer = 
+        new RandomAccessFile("temperatures_random","rw");
+
+        fitxer.write(temperatures);
+        fitxer.close();
+    }
+        
+    
+    public static void escriureTemperatures(byte[] temperatures,                                             
                                             int pos) throws IOException {
-        f.seek(pos);
-        f.write(temperatures);
+        RandomAccessFile fitxer = 
+        new RandomAccessFile("temperatures_random","rw");
+
+        fitxer.seek(pos);
+        fitxer.write(temperatures);
+        fitxer.close();
         
     }
 
-    public static void llegirTemperatures(byte[] temperatures,RandomAccessFile f) throws IOException {                
-        f.read(temperatures);
+    public static void llegirTemperatures(byte[] temperatures) throws IOException {                
+
+        RandomAccessFile fitxer = 
+        new RandomAccessFile("temperatures_random","r");
+        
+        fitxer.read(temperatures);
+        fitxer.close();
         
     }
 
