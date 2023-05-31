@@ -44,7 +44,7 @@ public class Comparador {
             
             String liniaFitxer1 = null, liniaFitxer2 = null;
             int comptador = 0;
-            while ((liniaFitxer1 = f1.readLine()) != null && (liniaFitxer2 = f2.readLine()) != null) {
+            while ((liniaFitxer1 = f1.readLine()) != null & (liniaFitxer2 = f2.readLine()) != null) {
                 if (liniaFitxer1.equals(liniaFitxer2))
                     sortida.write(liniaFitxer1 + "\n");
                 else {
@@ -57,25 +57,13 @@ public class Comparador {
             
             if (liniaFitxer1 == null && liniaFitxer2 == null)
                 System.out.println("Final dels dos fitxers en línia " + comptador);
-            else if (liniaFitxer1 == null) {
-                System.out.println("Final del fitxer " + fitxer1 + " en línia " + comptador);
-                System.out.println("Resta del fitxer " + fitxer2 + ": ");                
-                while ((liniaFitxer2 = f2.readLine()) != null) {            
-                    System.out.println(liniaFitxer2);
-                    comptador++;
-                }
-                System.out.println("Final de fitxer " + fitxer2 + " en línia " + comptador);
-            } else {
-                System.out.println("Final del fitxer " + fitxer2 + " en línia " + comptador);
-                System.out.println("Resta del fitxer " + fitxer1 + ": ");
-                System.out.println(liniaFitxer1);
-                while ((liniaFitxer1 = f1.readLine()) != null) {            
-                    System.out.println(liniaFitxer1);
-                    comptador++;
-                }
-                System.out.println("Final de fitxer " + fitxer1 + " en línia " + comptador);
-            }
+            else if (liniaFitxer1 == null)
+                finalitzaLecturaFitxer(fitxer1, fitxer2, f2,liniaFitxer2,comptador); 
+            else 
+                finalitzaLecturaFitxer(fitxer2, fitxer1, f1,liniaFitxer1,comptador); 
             
+            f1.close();
+            f2.close();
             sortida.close();
             
         } catch (IOException e) {}
@@ -95,5 +83,27 @@ public class Comparador {
         }
 
         return nomFitxer;
+    }
+    
+    public static void finalitzaLecturaFitxer(String nomFitxerAcabat, 
+                                              String nomFitxerNoFinalitzat,
+                                              BufferedReader fitxerNoFinalitzat,
+                                              String liniaLlegida,
+                                              int comptador) {
+        
+        System.out.println("Final del fitxer " + nomFitxerAcabat + 
+                           " en línia " + comptador);
+        System.out.println("Resta del fitxer " + nomFitxerNoFinalitzat + ": ");         
+        System.out.println(liniaLlegida);
+        try {               
+            String liniaFitxer2 = null;
+            while ((liniaFitxer2 = fitxerNoFinalitzat.readLine()) != null) {            
+                System.out.println(liniaFitxer2);
+                comptador++;
+            }
+            System.out.println("Final de fitxer " + nomFitxerNoFinalitzat + 
+                               " en línia " + comptador);        
+        } 
+        catch (IOException e) {}
     }
 }
